@@ -1,8 +1,8 @@
 androidmvp
 ==========
 
-MVP Android Example used to explain how to use this pattern in our Android apps. This code was created to support an article explanation (Spanish):
+MVP Android Example used to explain how to use this pattern in our Android apps. This code was created to support an article explanation:
 
-[Android MVP @ Lime Creative Labs](http://www.limecreativelabs.com/mvp-android/)
+[Android MVP @ antonioleiva.com (English)](http://antonioleiva.com/mpv-android)
 
-It will be soon available in English at [http://antonioleiva.com](http://antonioleiva.com)
+[Android MVP @ LiME Creative Labs (Spanish)](http://www.limecreativelabs.com/mvp-android/)
