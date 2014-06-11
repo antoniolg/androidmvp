@@ -14,7 +14,6 @@ gen/
 
 # Gradle files
 .gradle/
-gradle/
 ./gradlew.bat
 ./gradlew
 build/
