@@ -15,8 +15,9 @@
  *  * limitations under the License.
  *
  */
-
 package com.antonioleiva.mvpexample.app.main;
+
+import com.antonioleiva.mvpexample.app.R;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -29,28 +30,32 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.antonioleiva.mvpexample.app.R;
-
 import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 public class MainActivity extends Activity implements MainView, AdapterView.OnItemClickListener {
 
-    private ListView listView;
-    private ProgressBar progressBar;
+    @InjectView(R.id.list) ListView mList;
+
+    @InjectView(R.id.progress) ProgressBar mProgress;
+
     private MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = (ListView) findViewById(R.id.list);
-        listView.setOnItemClickListener(this);
-        progressBar = (ProgressBar) findViewById(R.id.progress);
+        ButterKnife.inject(this);
+
+        mList.setOnItemClickListener(this);
         presenter = new MainPresenterImpl(this);
 
     }
 
-    @Override protected void onResume() {
+    @Override
+    protected void onResume() {
         super.onResume();
         presenter.onResume();
     }
@@ -74,25 +79,30 @@ public class MainActivity extends Activity implements MainView, AdapterView.OnIt
         return super.onOptionsItemSelected(item);
     }
 
-    @Override public void showProgress() {
-        progressBar.setVisibility(View.VISIBLE);
-        listView.setVisibility(View.INVISIBLE);
+    @Override
+    public void showProgress() {
+        mProgress.setVisibility(View.VISIBLE);
+        mList.setVisibility(View.INVISIBLE);
     }
 
-    @Override public void hideProgress() {
-        progressBar.setVisibility(View.INVISIBLE);
-        listView.setVisibility(View.VISIBLE);
+    @Override
+    public void hideProgress() {
+        mProgress.setVisibility(View.INVISIBLE);
+        mList.setVisibility(View.VISIBLE);
     }
 
-    @Override public void setItems(List<String> items) {
-        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items));
+    @Override
+    public void setItems(List<String> items) {
+        mList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items));
     }
 
-    @Override public void showMessage(String message) {
+    @Override
+    public void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
-    @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         presenter.onItemClicked(position);
     }
 }
