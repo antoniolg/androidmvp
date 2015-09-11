@@ -1,15 +1,12 @@
-package com.antonioleiva.mvpexample.app.dependency;
+package com.antonioleiva.mvpexample.app.di;
 
 import android.app.Activity;
 
-import com.antonioleiva.mvpexample.app.Login.LoginActivity;
 import com.antonioleiva.mvpexample.app.Login.LoginInteractor;
 import com.antonioleiva.mvpexample.app.Login.LoginInteractorImpl;
 import com.antonioleiva.mvpexample.app.Login.LoginPresenter;
 import com.antonioleiva.mvpexample.app.Login.LoginPresenterImpl;
 import com.antonioleiva.mvpexample.app.Login.LoginView;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -19,7 +16,17 @@ import dagger.Provides;
  */
 
 @Module
-public class MvpExampleAppModule {
+public class MvpPresenterModule {
+
+    @Provides
+    LoginPresenter provideLoginPresenter(LoginView loginView, LoginInteractor loginInteractor) {
+        return new LoginPresenterImpl(loginView, loginInteractor);
+    }
+
+    @Provides
+    LoginView provideLoginView(Activity activity) {
+        return (LoginView) activity;
+    }
 
     @Provides
     LoginInteractor provideLoginInteractor() {

@@ -3,8 +3,8 @@ package com.antonioleiva.mvpexample.app;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.antonioleiva.mvpexample.app.dependency.ApplicationComponent;
-import com.antonioleiva.mvpexample.app.dependency.MvpActivityModule;
+import com.antonioleiva.mvpexample.app.di.ApplicationComponent;
+import com.antonioleiva.mvpexample.app.di.MvpActivityModule;
 
 /**
  * Created by venkatesh on 11/9/15.

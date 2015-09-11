@@ -18,7 +18,6 @@
 
 package com.antonioleiva.mvpexample.app.Login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,10 +27,9 @@ import android.widget.ProgressBar;
 import com.antonioleiva.mvpexample.app.BaseActivity;
 import com.antonioleiva.mvpexample.app.MvpExampleApplication;
 import com.antonioleiva.mvpexample.app.R;
-import com.antonioleiva.mvpexample.app.dependency.ActivityComponent;
-import com.antonioleiva.mvpexample.app.dependency.DaggerActivityComponent;
-import com.antonioleiva.mvpexample.app.dependency.MvpActivityModule;
-import com.antonioleiva.mvpexample.app.dependency.MvpPresenterModule;
+import com.antonioleiva.mvpexample.app.di.ActivityComponent;
+import com.antonioleiva.mvpexample.app.di.DaggerActivityComponent;
+import com.antonioleiva.mvpexample.app.di.MvpPresenterModule;
 import com.antonioleiva.mvpexample.app.main.MainActivity;
 
 import javax.inject.Inject;

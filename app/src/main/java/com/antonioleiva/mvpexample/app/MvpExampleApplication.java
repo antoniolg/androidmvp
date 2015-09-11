@@ -2,9 +2,9 @@ package com.antonioleiva.mvpexample.app;
 
 import android.app.Application;
 
-import com.antonioleiva.mvpexample.app.dependency.ApplicationComponent;
-import com.antonioleiva.mvpexample.app.dependency.DaggerApplicationComponent;
-import com.antonioleiva.mvpexample.app.dependency.MvpExampleAppModule;
+import com.antonioleiva.mvpexample.app.di.ApplicationComponent;
+import com.antonioleiva.mvpexample.app.di.DaggerApplicationComponent;
+import com.antonioleiva.mvpexample.app.di.MvpExampleAppModule;
 
 /**
  * Created by venkatesh on 11/9/15.

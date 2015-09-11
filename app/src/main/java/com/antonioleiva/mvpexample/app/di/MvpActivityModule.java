@@ -1,4 +1,4 @@
-package com.antonioleiva.mvpexample.app.dependency;
+package com.antonioleiva.mvpexample.app.di;
 
 import android.app.Activity;
 

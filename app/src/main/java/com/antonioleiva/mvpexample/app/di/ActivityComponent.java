@@ -1,4 +1,4 @@
-package com.antonioleiva.mvpexample.app.dependency;
+package com.antonioleiva.mvpexample.app.di;
 
 import com.antonioleiva.mvpexample.app.Login.LoginActivity;
 import com.antonioleiva.mvpexample.app.Login.LoginPresenterImpl;
