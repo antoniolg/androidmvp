@@ -1,12 +1,23 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+buildscript {
+    repositories {
+        jcenter()
+
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+    }
+}
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 22
     buildToolsVersion "19.1.0"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 19
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
@@ -24,5 +35,8 @@ android {
 }
 
 dependencies {
+    compile "com.google.dagger:dagger:2.0.1"
+    compile "com.google.dagger:dagger-compiler:2.0.1"
+    provided 'javax.annotation:jsr250-api:1.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }

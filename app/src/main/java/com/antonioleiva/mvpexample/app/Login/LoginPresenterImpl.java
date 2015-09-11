@@ -18,14 +18,16 @@
 
 package com.antonioleiva.mvpexample.app.Login;
 
+
 public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListener {
 
-    private LoginView loginView;
-    private LoginInteractor loginInteractor;
+    LoginInteractor loginInteractor;
 
-    public LoginPresenterImpl(LoginView loginView) {
+    private LoginView loginView;
+
+    public LoginPresenterImpl(LoginView loginView, LoginInteractor loginInteractor) {
         this.loginView = loginView;
-        this.loginInteractor = new LoginInteractorImpl();
+        this.loginInteractor = loginInteractor;
     }
 
     @Override public void validateCredentials(String username, String password) {
