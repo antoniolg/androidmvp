@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity implements MainView, AdapterView.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initializeInjector();
+        activityComponent = initializeInjector();
         activityComponent.inject(this);
         setContentView(R.layout.activity_main);
         listView = (ListView) findViewById(R.id.list);
@@ -103,13 +103,5 @@ public class MainActivity extends BaseActivity implements MainView, AdapterView.
 
     @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         presenter.onItemClicked(position);
-    }
-
-    private void initializeInjector() {
-        activityComponent = DaggerActivityComponent.builder()
-                .applicationComponent(getApplicationComponent())
-                .mvpActivityModule(getActivityModule())
-                .mvpPresenterModule(new MvpPresenterModule())
-                .build();
     }
 }

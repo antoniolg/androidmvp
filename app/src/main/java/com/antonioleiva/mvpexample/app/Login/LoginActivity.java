@@ -45,7 +45,7 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initializeInjector();
+        activityComponent = initializeInjector();
         activityComponent.inject(this);
         setContentView(R.layout.activity_login);
 
@@ -80,11 +80,4 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
         presenter.validateCredentials(username.getText().toString(), password.getText().toString());
     }
 
-    private void initializeInjector() {
-        activityComponent = DaggerActivityComponent.builder()
-                .applicationComponent(((MvpExampleApplication) getApplication()).getComponent())
-                .mvpActivityModule(getActivityModule())
-                .mvpPresenterModule(new MvpPresenterModule())
-                .build();
-    }
 }
