@@ -7,6 +7,11 @@ import com.antonioleiva.mvpexample.app.Login.LoginInteractorImpl;
 import com.antonioleiva.mvpexample.app.Login.LoginPresenter;
 import com.antonioleiva.mvpexample.app.Login.LoginPresenterImpl;
 import com.antonioleiva.mvpexample.app.Login.LoginView;
+import com.antonioleiva.mvpexample.app.main.FindItemsInteractor;
+import com.antonioleiva.mvpexample.app.main.FindItemsInteractorImpl;
+import com.antonioleiva.mvpexample.app.main.MainPresenter;
+import com.antonioleiva.mvpexample.app.main.MainPresenterImpl;
+import com.antonioleiva.mvpexample.app.main.MainView;
 
 import dagger.Module;
 import dagger.Provides;
@@ -31,5 +36,20 @@ public class MvpPresenterModule {
     @Provides
     LoginInteractor provideLoginInteractor() {
         return new LoginInteractorImpl();
+    }
+
+    @Provides
+    MainPresenter provideMainPresenter(MainView mainView, FindItemsInteractor findItemsInteractor) {
+        return new MainPresenterImpl(mainView, findItemsInteractor);
+    }
+
+    @Provides
+    FindItemsInteractor provideFindItemsInteractor() {
+        return new FindItemsInteractorImpl();
+    }
+
+    @Provides
+    MainView provideMainView(Activity activity) {
+        return (MainView) activity;
     }
 }
