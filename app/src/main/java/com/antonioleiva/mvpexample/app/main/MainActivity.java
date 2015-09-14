@@ -29,24 +29,33 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.antonioleiva.mvpexample.app.BaseActivity;
+import com.antonioleiva.mvpexample.app.MvpExampleApplication;
 import com.antonioleiva.mvpexample.app.R;
+import com.antonioleiva.mvpexample.app.di.ActivityComponent;
+import com.antonioleiva.mvpexample.app.di.DaggerActivityComponent;
+import com.antonioleiva.mvpexample.app.di.MvpPresenterModule;
 
 import java.util.List;
 
-public class MainActivity extends Activity implements MainView, AdapterView.OnItemClickListener {
+import javax.inject.Inject;
+
+public class MainActivity extends BaseActivity implements MainView, AdapterView.OnItemClickListener {
+    private ActivityComponent activityComponent;
 
     private ListView listView;
     private ProgressBar progressBar;
-    private MainPresenter presenter;
+    @Inject MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activityComponent = initializeInjector();
+        activityComponent.inject(this);
         setContentView(R.layout.activity_main);
         listView = (ListView) findViewById(R.id.list);
         listView.setOnItemClickListener(this);
         progressBar = (ProgressBar) findViewById(R.id.progress);
-        presenter = new MainPresenterImpl(this);
 
     }
 

@@ -18,34 +18,41 @@
 
 package com.antonioleiva.mvpexample.app.Login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import com.antonioleiva.mvpexample.app.BaseActivity;
+import com.antonioleiva.mvpexample.app.MvpExampleApplication;
 import com.antonioleiva.mvpexample.app.R;
+import com.antonioleiva.mvpexample.app.di.ActivityComponent;
+import com.antonioleiva.mvpexample.app.di.DaggerActivityComponent;
+import com.antonioleiva.mvpexample.app.di.MvpPresenterModule;
 import com.antonioleiva.mvpexample.app.main.MainActivity;
 
-public class LoginActivity extends Activity implements LoginView, View.OnClickListener {
+import javax.inject.Inject;
+
+public class LoginActivity extends BaseActivity implements LoginView, View.OnClickListener {
+    private ActivityComponent activityComponent;
 
     private ProgressBar progressBar;
     private EditText username;
     private EditText password;
-    private LoginPresenter presenter;
+    @Inject LoginPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activityComponent = initializeInjector();
+        activityComponent.inject(this);
         setContentView(R.layout.activity_login);
 
         progressBar = (ProgressBar) findViewById(R.id.progress);
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         findViewById(R.id.button).setOnClickListener(this);
-
-        presenter = new LoginPresenterImpl(this);
     }
 
     @Override public void showProgress() {
@@ -72,4 +79,5 @@ public class LoginActivity extends Activity implements LoginView, View.OnClickLi
     @Override public void onClick(View v) {
         presenter.validateCredentials(username.getText().toString(), password.getText().toString());
     }
+
 }
