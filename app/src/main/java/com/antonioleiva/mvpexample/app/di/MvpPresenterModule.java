@@ -33,10 +33,6 @@ public class MvpPresenterModule {
         return (LoginView) activity;
     }
 
-    @Provides
-    LoginInteractor provideLoginInteractor() {
-        return new LoginInteractorImpl();
-    }
 
     @Provides
     MainPresenter provideMainPresenter(MainView mainView, FindItemsInteractor findItemsInteractor) {

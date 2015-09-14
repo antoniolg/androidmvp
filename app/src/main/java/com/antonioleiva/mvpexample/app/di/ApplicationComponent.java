@@ -1,6 +1,7 @@
 package com.antonioleiva.mvpexample.app.di;
 
 import com.antonioleiva.mvpexample.app.BaseActivity;
+import com.antonioleiva.mvpexample.app.Login.LoginInteractor;
 import com.antonioleiva.mvpexample.app.MvpExampleApplication;
 
 import javax.inject.Singleton;
@@ -16,4 +17,6 @@ import dagger.Component;
 public interface ApplicationComponent {
     void inject(MvpExampleApplication mvpExampleApplication);
     void inject(BaseActivity baseActivity);
+
+    LoginInteractor loginInteractor();
 }
