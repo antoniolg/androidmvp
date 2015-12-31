@@ -31,16 +31,27 @@ public class MainPresenterImpl implements MainPresenter, OnFinishedListener {
     }
 
     @Override public void onResume() {
-        mainView.showProgress();
+        if (mainView != null) {
+            mainView.showProgress();
+        }
+
         findItemsInteractor.findItems(this);
     }
 
     @Override public void onItemClicked(int position) {
-        mainView.showMessage(String.format("Position %d clicked", position + 1));
+        if (mainView != null) {
+            mainView.showMessage(String.format("Position %d clicked", position + 1));
+        }
+    }
+
+    @Override public void onDestroy() {
+        mainView = null;
     }
 
     @Override public void onFinished(List<String> items) {
-        mainView.setItems(items);
-        mainView.hideProgress();
+        if (mainView != null) {
+            mainView.setItems(items);
+            mainView.hideProgress();
+        }
     }
 }

@@ -29,21 +29,34 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
     }
 
     @Override public void validateCredentials(String username, String password) {
-        loginView.showProgress();
+        if (loginView != null) {
+            loginView.showProgress();
+        }
+
         loginInteractor.login(username, password, this);
     }
 
+    @Override public void onDestroy() {
+        loginView = null;
+    }
+
     @Override public void onUsernameError() {
-        loginView.setUsernameError();
-        loginView.hideProgress();
+        if (loginView != null) {
+            loginView.setUsernameError();
+            loginView.hideProgress();
+        }
     }
 
     @Override public void onPasswordError() {
-        loginView.setPasswordError();
-        loginView.hideProgress();
+        if (loginView != null) {
+            loginView.setPasswordError();
+            loginView.hideProgress();
+        }
     }
 
     @Override public void onSuccess() {
-        loginView.navigateToHome();
+        if (loginView != null) {
+            loginView.navigateToHome();
+        }
     }
 }

@@ -48,6 +48,11 @@ public class LoginActivity extends Activity implements LoginView, View.OnClickLi
         presenter = new LoginPresenterImpl(this);
     }
 
+    @Override protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
+    }
+
     @Override public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
     }

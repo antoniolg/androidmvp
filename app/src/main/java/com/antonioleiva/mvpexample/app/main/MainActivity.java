@@ -71,6 +71,11 @@ public class MainActivity extends Activity implements MainView, AdapterView.OnIt
         }
     }
 
+    @Override protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
+    }
+
     @Override public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
         listView.setVisibility(View.INVISIBLE);
