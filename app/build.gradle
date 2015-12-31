@@ -1,24 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 19
+        applicationId "com.antonioleiva.androidmvp"
+        minSdkVersion 16
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
     }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
