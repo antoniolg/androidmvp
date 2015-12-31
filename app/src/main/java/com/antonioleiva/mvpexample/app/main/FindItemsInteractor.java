@@ -20,5 +20,5 @@ package com.antonioleiva.mvpexample.app.main;
 
 public interface FindItemsInteractor {
 
-    public void findItems(OnFinishedListener listener);
+    void findItems(OnFinishedListener listener);
 }

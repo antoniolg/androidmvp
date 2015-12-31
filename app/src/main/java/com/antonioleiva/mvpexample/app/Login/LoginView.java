@@ -19,13 +19,13 @@
 package com.antonioleiva.mvpexample.app.Login;
 
 public interface LoginView {
-    public void showProgress();
+    void showProgress();
 
-    public void hideProgress();
+    void hideProgress();
 
-    public void setUsernameError();
+    void setUsernameError();
 
-    public void setPasswordError();
+    void setPasswordError();
 
-    public void navigateToHome();
+    void navigateToHome();
 }

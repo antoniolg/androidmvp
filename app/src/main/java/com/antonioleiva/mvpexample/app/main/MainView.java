@@ -22,11 +22,11 @@ import java.util.List;
 
 public interface MainView {
 
-    public void showProgress();
+    void showProgress();
 
-    public void hideProgress();
+    void hideProgress();
 
-    public void setItems(List<String> items);
+    void setItems(List<String> items);
 
-    public void showMessage(String message);
+    void showMessage(String message);
 }
