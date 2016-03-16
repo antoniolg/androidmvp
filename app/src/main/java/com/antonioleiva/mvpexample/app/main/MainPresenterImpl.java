@@ -20,7 +20,7 @@ package com.antonioleiva.mvpexample.app.main;
 
 import java.util.List;
 
-public class MainPresenterImpl implements MainPresenter, OnFinishedListener {
+public class MainPresenterImpl implements MainPresenter, FindItemsInteractor.OnFinishedListener {
 
     private MainView mainView;
     private FindItemsInteractor findItemsInteractor;
