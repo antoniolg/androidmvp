@@ -25,9 +25,9 @@ public class MainPresenterImpl implements MainPresenter, FindItemsInteractor.OnF
     private MainView mainView;
     private FindItemsInteractor findItemsInteractor;
 
-    public MainPresenterImpl(MainView mainView) {
+    public MainPresenterImpl(MainView mainView, FindItemsInteractor findItemsInteractor) {
         this.mainView = mainView;
-        findItemsInteractor = new FindItemsInteractorImpl();
+        this.findItemsInteractor = findItemsInteractor;
     }
 
     @Override public void onResume() {
@@ -53,5 +53,9 @@ public class MainPresenterImpl implements MainPresenter, FindItemsInteractor.OnF
             mainView.setItems(items);
             mainView.hideProgress();
         }
+    }
+
+    public MainView getMainView() {
+        return mainView;
     }
 }

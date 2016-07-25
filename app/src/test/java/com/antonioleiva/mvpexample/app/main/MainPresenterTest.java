@@ -7,7 +7,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,14 +26,11 @@ public class MainPresenterTest {
     @Mock
     FindItemsInteractor interactor;
 
-    MainPresenterImpl presenter;
+    private MainPresenterImpl presenter;
 
     @Before
     public void setUp() throws Exception {
-        presenter = new MainPresenterImpl(view);
-        Field field = presenter.getClass().getDeclaredField("findItemsInteractor");
-        field.setAccessible(true);
-        field.set(presenter, interactor);
+        presenter = new MainPresenterImpl(view, interactor);
     }
 
     @Test
@@ -58,12 +54,9 @@ public class MainPresenterTest {
     }
 
     @Test
-    public void checkIfViewIsReleasedOnDestroy() throws Exception {
+    public void checkIfViewIsReleasedOnDestroy() {
         presenter.onDestroy();
-        Field field = presenter.getClass().getDeclaredField("mainView");
-        field.setAccessible(true);
-        MainView view = (MainView) field.get(presenter);
-        assertNull(view);
+        assertNull(presenter.getMainView());
     }
 
     @Test
