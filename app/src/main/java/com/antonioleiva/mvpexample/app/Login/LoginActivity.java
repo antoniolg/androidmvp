@@ -35,8 +35,7 @@ public class LoginActivity extends Activity implements LoginView, View.OnClickLi
     private EditText password;
     private LoginPresenter presenter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
