@@ -20,11 +20,12 @@ package com.antonioleiva.mvpexample.app.main;
 
 public interface MainPresenter {
 
-    void setView(MainView mainView);
-
     void onResume();
 
     void onItemClicked(int position);
 
     void onDestroy();
+
+    void setView(MainView mainView);
+
 }

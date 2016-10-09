@@ -24,17 +24,20 @@ import javax.inject.Inject;
 
 public class MainPresenterImpl implements MainPresenter, FindItemsInteractor.OnFinishedListener {
 
-    private MainView mainView;
     @Inject
     FindItemsInteractor findItemsInteractor;
+    private MainView mainView;
 
     public MainPresenterImpl(FindItemsInteractor findItemsInteractor) {
         this.findItemsInteractor = findItemsInteractor;
     }
 
     @Override
-    public void setView(MainView mainView) {
-        this.mainView = mainView;
+    public void onFinished(List<String> items) {
+        if (mainView != null) {
+            mainView.setItems(items);
+            mainView.hideProgress();
+        }
     }
 
     @Override
@@ -58,15 +61,12 @@ public class MainPresenterImpl implements MainPresenter, FindItemsInteractor.OnF
         mainView = null;
     }
 
-    @Override
-    public void onFinished(List<String> items) {
-        if (mainView != null) {
-            mainView.setItems(items);
-            mainView.hideProgress();
-        }
+    public MainView getView() {
+        return mainView;
     }
 
-    public MainView getMainView() {
-        return mainView;
+    @Override
+    public void setView(MainView mainView) {
+        this.mainView = mainView;
     }
 }

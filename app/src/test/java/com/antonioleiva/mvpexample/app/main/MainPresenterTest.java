@@ -1,16 +1,14 @@
 package com.antonioleiva.mvpexample.app.main;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -27,15 +25,8 @@ public class MainPresenterTest {
     MainView view;
     @Mock
     FindItemsInteractor interactor;
-
-//    private MainPresenterImpl presenter;
-    @Inject
-    MainPresenter presenter;
-
-//    @Before
-//    public void setUp() throws Exception {
-//        presenter = new MainPresenterImpl(new FindItemsInteractorImpl());
-//    }
+    @InjectMocks
+    MainPresenterImpl presenter = new MainPresenterImpl(interactor);
 
     @Test
     public void checkIfShowsProgressOnResume() {
@@ -60,7 +51,7 @@ public class MainPresenterTest {
     @Test
     public void checkIfViewIsReleasedOnDestroy() {
         presenter.onDestroy();
-        assertNull(presenter.getMainView());
+        assertNull(presenter.getView());
     }
 
     @Test
