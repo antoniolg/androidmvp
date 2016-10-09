@@ -10,6 +10,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNull;
@@ -26,12 +28,14 @@ public class MainPresenterTest {
     @Mock
     FindItemsInteractor interactor;
 
-    private MainPresenterImpl presenter;
+//    private MainPresenterImpl presenter;
+    @Inject
+    MainPresenter presenter;
 
-    @Before
-    public void setUp() throws Exception {
-        presenter = new MainPresenterImpl(view, interactor);
-    }
+//    @Before
+//    public void setUp() throws Exception {
+//        presenter = new MainPresenterImpl(new FindItemsInteractorImpl());
+//    }
 
     @Test
     public void checkIfShowsProgressOnResume() {

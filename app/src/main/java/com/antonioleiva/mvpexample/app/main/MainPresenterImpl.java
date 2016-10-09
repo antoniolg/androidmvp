@@ -20,14 +20,21 @@ package com.antonioleiva.mvpexample.app.main;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class MainPresenterImpl implements MainPresenter, FindItemsInteractor.OnFinishedListener {
 
     private MainView mainView;
-    private FindItemsInteractor findItemsInteractor;
+    @Inject
+    FindItemsInteractor findItemsInteractor;
 
-    public MainPresenterImpl(MainView mainView) {
+    public MainPresenterImpl(FindItemsInteractor findItemsInteractor) {
+        this.findItemsInteractor = findItemsInteractor;
+    }
+
+    @Override
+    public void setView(MainView mainView) {
         this.mainView = mainView;
-        this.findItemsInteractor = new FindItemsInteractorImpl();
     }
 
     @Override
