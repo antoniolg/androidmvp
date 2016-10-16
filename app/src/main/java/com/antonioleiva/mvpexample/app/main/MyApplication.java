@@ -28,6 +28,7 @@ public class MyApplication extends Application {
         super.onCreate();
         dependencyComponent = DaggerDependencyComponent.builder().dependencyModule(new
                 DependencyModule(this)).build();
+        dependencyComponent.inject(this);
     }
 
     public DependencyComponent getDependencyComponent() {

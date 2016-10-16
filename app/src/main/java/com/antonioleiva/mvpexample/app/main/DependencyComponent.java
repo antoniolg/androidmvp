@@ -25,13 +25,7 @@ import dagger.Component;
 @Singleton
 @Component(modules = {DependencyModule.class})
 public interface DependencyComponent {
-    MyApplication provideApplication();
-
-    MainPresenter provideMainPresenter();
-
-    FindItemsInteractor provideFindItemsInteractor();
+    void inject(MyApplication myApplication);
 
     void inject(MainActivity mainActivity);
-
-    void inject(MainViewImpl mainViewImpl);
 }

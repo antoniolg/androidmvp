@@ -31,10 +31,10 @@ public class DependencyModule {
         this.myApplication = myApplication;
     }
 
-    @Provides
     @Singleton
-    MyApplication provideApplication() {
-        return myApplication;
+    @Provides
+    MainViewImpl provideMainViewImpl(MainPresenter mainPresenter) {
+        return new MainViewImpl(mainPresenter);
     }
 
     @Singleton
