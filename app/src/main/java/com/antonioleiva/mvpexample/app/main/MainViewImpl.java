@@ -53,8 +53,6 @@ public class MainViewImpl extends Fragment implements MainView, AdapterView.OnIt
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
-        ((MyApplication) getActivity().getApplication()).getDependencyComponent().inject
-                (this);
         rootView = inflater.inflate(R.layout.main_fragment, container, false);
         listView = (ListView) rootView.findViewById(R.id.list);
         listView.setOnItemClickListener(this);

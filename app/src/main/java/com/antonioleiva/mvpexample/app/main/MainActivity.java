@@ -31,12 +31,14 @@ public class MainActivity extends Activity {
 
     @Inject
     MainPresenter mainPresenter;
+    @Inject
+    MainViewImpl mainViewImpl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((MyApplication) getApplication()).getDependencyComponent().inject(this);
-        initiateView(mainPresenter);
+        initiateView();
     }
 
     @Override
@@ -67,9 +69,8 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void initiateView(MainPresenter mainPresenter) {
+    private void initiateView() {
         setContentView(R.layout.activity_main);
-        MainViewImpl mainViewImpl = new MainViewImpl(mainPresenter);
         getFragmentManager().beginTransaction().add(R.id.main_fragment_holder, mainViewImpl)
                 .commit();
     }

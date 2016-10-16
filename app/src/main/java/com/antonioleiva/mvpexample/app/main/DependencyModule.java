@@ -25,16 +25,10 @@ import dagger.Provides;
 
 @Module
 public class DependencyModule {
-    MyApplication myApplication;
-
-    public DependencyModule(MyApplication myApplication) {
-        this.myApplication = myApplication;
-    }
-
-    @Provides
     @Singleton
-    MyApplication provideApplication() {
-        return myApplication;
+    @Provides
+    MainViewImpl provideMainViewImpl(MainPresenter mainPresenter) {
+        return new MainViewImpl(mainPresenter);
     }
 
     @Singleton
