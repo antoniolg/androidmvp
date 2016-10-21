@@ -14,10 +14,12 @@ public class LoginInteractorImpl implements LoginInteractor {
                 if (TextUtils.isEmpty(username)){
                     listener.onUsernameError();
                     error = true;
+                    return;
                 }
                 if (TextUtils.isEmpty(password)){
                     listener.onPasswordError();
                     error = true;
+                    return;
                 }
                 if (!error){
                     listener.onSuccess();
