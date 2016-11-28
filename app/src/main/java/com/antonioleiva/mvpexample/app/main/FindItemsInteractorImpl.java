@@ -19,14 +19,16 @@
 package com.antonioleiva.mvpexample.app.main;
 
 import android.os.Handler;
+import android.os.Looper;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class FindItemsInteractorImpl implements FindItemsInteractor {
     @Override public void findItems(final OnFinishedListener listener) {
-        new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
                 listener.onFinished(createArrayList());
             }
         }, 2000);
