@@ -23,9 +23,9 @@ public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.OnLog
     private LoginView loginView;
     private LoginInteractor loginInteractor;
 
-    public LoginPresenterImpl(LoginView loginView) {
+    public LoginPresenterImpl(LoginView loginView,LoginInteractorImpl loginInteractor) {
         this.loginView = loginView;
-        this.loginInteractor = new LoginInteractorImpl();
+        this.loginInteractor = loginInteractor;
     }
 
     @Override public void validateCredentials(String username, String password) {
