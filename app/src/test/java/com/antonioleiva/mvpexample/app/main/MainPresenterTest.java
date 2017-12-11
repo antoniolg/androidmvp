@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,46 +21,38 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class MainPresenterTest {
 
-    @Mock
-    MainView view;
-    @Mock
-    FindItemsInteractor interactor;
+    @Mock MainView view;
+    @Mock FindItemsInteractor interactor;
 
     private MainPresenterImpl presenter;
 
-    @Before
-    public void setUp() throws Exception {
+    @Before public void setUp() throws Exception {
         presenter = new MainPresenterImpl(view, interactor);
     }
 
-    @Test
-    public void checkIfShowsProgressOnResume() {
+    @Test public void checkIfShowsProgressOnResume() {
         presenter.onResume();
         verify(view, times(1)).showProgress();
     }
 
-    @Test
-    public void checkIfShowsMessageOnItemClick() {
+    @Test public void checkIfShowsMessageOnItemClick() {
         presenter.onItemClicked(1);
         verify(view, times(1)).showMessage(anyString());
     }
 
-    @Test
-    public void checkIfRightMessageIsDisplayed() {
+    @Test public void checkIfRightMessageIsDisplayed() {
         ArgumentCaptor<String> captor = forClass(String.class);
         presenter.onItemClicked(1);
         verify(view, times(1)).showMessage(captor.capture());
         assertThat(captor.getValue(), is("Position 2 clicked"));
     }
 
-    @Test
-    public void checkIfViewIsReleasedOnDestroy() {
+    @Test public void checkIfViewIsReleasedOnDestroy() {
         presenter.onDestroy();
         assertNull(presenter.getMainView());
     }
 
-    @Test
-    public void checkIfItemsArePassedToView() {
+    @Test public void checkIfItemsArePassedToView() {
         List<String> items = Arrays.asList("Model", "View", "Controller");
         presenter.onFinished(items);
         verify(view, times(1)).setItems(items);
