@@ -18,14 +18,19 @@
 
 package com.antonioleiva.mvpexample.app.main;
 
-public interface MainPresenter {
+import android.app.Application;
 
-    void onResume();
+public class MyApplication extends Application {
+    private DependencyComponent dependencyComponent;
 
-    void onItemClicked(int position);
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        dependencyComponent = DaggerDependencyComponent.builder().dependencyModule(new
+                DependencyModule()).build();
+    }
 
-    void onDestroy();
-
-    void setView(MainView mainView);
-
+    public DependencyComponent getDependencyComponent() {
+        return dependencyComponent;
+    }
 }

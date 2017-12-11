@@ -18,14 +18,28 @@
 
 package com.antonioleiva.mvpexample.app.main;
 
-public interface MainPresenter {
+import javax.inject.Singleton;
 
-    void onResume();
+import dagger.Module;
+import dagger.Provides;
 
-    void onItemClicked(int position);
+@Module
+public class DependencyModule {
+    @Singleton
+    @Provides
+    MainViewImpl provideMainViewImpl(MainPresenter mainPresenter) {
+        return new MainViewImpl(mainPresenter);
+    }
 
-    void onDestroy();
+    @Singleton
+    @Provides
+    FindItemsInteractor provideFindItemsInteractor() {
+        return new FindItemsInteractorImpl();
+    }
 
-    void setView(MainView mainView);
-
+    @Singleton
+    @Provides
+    MainPresenter provideMainPresenter(FindItemsInteractor findItemsInteractor) {
+        return new MainPresenterImpl(findItemsInteractor);
+    }
 }

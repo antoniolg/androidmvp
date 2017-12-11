@@ -22,15 +22,23 @@ import java.util.List;
 
 public class MainPresenterImpl implements MainPresenter, FindItemsInteractor.OnFinishedListener {
 
-    private MainView mainView;
     private FindItemsInteractor findItemsInteractor;
+    private MainView mainView;
 
-    public MainPresenterImpl(MainView mainView, FindItemsInteractor findItemsInteractor) {
-        this.mainView = mainView;
+    public MainPresenterImpl(FindItemsInteractor findItemsInteractor) {
         this.findItemsInteractor = findItemsInteractor;
     }
 
-    @Override public void onResume() {
+    @Override
+    public void onFinished(List<String> items) {
+        if (mainView != null) {
+            mainView.setItems(items);
+            mainView.hideProgress();
+        }
+    }
+
+    @Override
+    public void onResume() {
         if (mainView != null) {
             mainView.showProgress();
         }
@@ -38,24 +46,24 @@ public class MainPresenterImpl implements MainPresenter, FindItemsInteractor.OnF
         findItemsInteractor.findItems(this);
     }
 
-    @Override public void onItemClicked(int position) {
+    @Override
+    public void onItemClicked(int position) {
         if (mainView != null) {
             mainView.showMessage(String.format("Position %d clicked", position + 1));
         }
     }
 
-    @Override public void onDestroy() {
+    @Override
+    public void onDestroy() {
         mainView = null;
     }
 
-    @Override public void onFinished(List<String> items) {
-        if (mainView != null) {
-            mainView.setItems(items);
-            mainView.hideProgress();
-        }
+    public MainView getView() {
+        return mainView;
     }
 
-    public MainView getMainView() {
-        return mainView;
+    @Override
+    public void setView(MainView mainView) {
+        this.mainView = mainView;
     }
 }

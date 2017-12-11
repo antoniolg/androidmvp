@@ -18,14 +18,12 @@
 
 package com.antonioleiva.mvpexample.app.main;
 
-public interface MainPresenter {
+import javax.inject.Singleton;
 
-    void onResume();
+import dagger.Component;
 
-    void onItemClicked(int position);
-
-    void onDestroy();
-
-    void setView(MainView mainView);
-
+@Singleton
+@Component(modules = {DependencyModule.class})
+public interface DependencyComponent {
+    void inject(MainActivity mainActivity);
 }
