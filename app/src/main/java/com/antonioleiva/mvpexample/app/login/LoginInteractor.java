@@ -1,4 +1,4 @@
-package com.antonioleiva.mvpexample.app.Login;
+package com.antonioleiva.mvpexample.app.login;
 
 import android.os.Handler;
 import android.text.TextUtils;
