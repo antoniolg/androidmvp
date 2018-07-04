@@ -18,11 +18,45 @@
 
 package com.antonioleiva.mvpexample.app.main;
 
-public interface MainPresenter {
+import java.util.List;
 
-    void onResume();
+class MainPresenter implements FindItemsInteractor.OnFinishedListener {
 
-    void onItemClicked(int position);
+    private MainView mainView;
+    private FindItemsInteractor findItemsInteractor;
 
-    void onDestroy();
+    MainPresenter(MainView mainView, FindItemsInteractor findItemsInteractor) {
+        this.mainView = mainView;
+        this.findItemsInteractor = findItemsInteractor;
+    }
+
+    void onResume() {
+        if (mainView != null) {
+            mainView.showProgress();
+        }
+
+        findItemsInteractor.findItems(this);
+    }
+
+    void onItemClicked(int position) {
+        if (mainView != null) {
+            mainView.showMessage(String.format("Position %d clicked", position + 1));
+        }
+    }
+
+    void onDestroy() {
+        mainView = null;
+    }
+
+    @Override
+    public void onFinished(List<String> items) {
+        if (mainView != null) {
+            mainView.setItems(items);
+            mainView.hideProgress();
+        }
+    }
+
+    public MainView getMainView() {
+        return mainView;
+    }
 }

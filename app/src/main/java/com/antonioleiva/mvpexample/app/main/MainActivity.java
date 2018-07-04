@@ -45,7 +45,7 @@ public class MainActivity extends Activity implements MainView, AdapterView.OnIt
         listView = findViewById(R.id.list);
         listView.setOnItemClickListener(this);
         progressBar = findViewById(R.id.progress);
-        presenter = new MainPresenterImpl(this, new FindItemsInteractorImpl());
+        presenter = new MainPresenter(this, new FindItemsInteractor());
     }
 
     @Override protected void onResume() {
