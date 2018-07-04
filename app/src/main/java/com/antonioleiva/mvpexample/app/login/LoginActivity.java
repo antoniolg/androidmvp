@@ -18,9 +18,9 @@
 
 package com.antonioleiva.mvpexample.app.login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -28,7 +28,7 @@ import android.widget.ProgressBar;
 import com.antonioleiva.mvpexample.app.R;
 import com.antonioleiva.mvpexample.app.main.MainActivity;
 
-public class LoginActivity extends Activity implements LoginView, View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
 
     private ProgressBar progressBar;
     private EditText username;

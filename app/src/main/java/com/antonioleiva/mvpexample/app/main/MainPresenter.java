@@ -38,9 +38,9 @@ class MainPresenter implements FindItemsInteractor.OnFinishedListener {
         findItemsInteractor.findItems(this);
     }
 
-    void onItemClicked(int position) {
+    void onItemClicked(String item) {
         if (mainView != null) {
-            mainView.showMessage(String.format("Position %d clicked", position + 1));
+            mainView.showMessage(String.format("%s clicked", item));
         }
     }
 
