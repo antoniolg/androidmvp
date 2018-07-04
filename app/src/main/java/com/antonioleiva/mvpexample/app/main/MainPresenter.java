@@ -20,7 +20,7 @@ package com.antonioleiva.mvpexample.app.main;
 
 import java.util.List;
 
-class MainPresenter implements FindItemsInteractor.OnFinishedListener {
+class MainPresenter {
 
     private MainView mainView;
     private FindItemsInteractor findItemsInteractor;
@@ -35,7 +35,7 @@ class MainPresenter implements FindItemsInteractor.OnFinishedListener {
             mainView.showProgress();
         }
 
-        findItemsInteractor.findItems(this);
+        findItemsInteractor.findItems(this::onFinished);
     }
 
     void onItemClicked(String item) {
@@ -48,7 +48,6 @@ class MainPresenter implements FindItemsInteractor.OnFinishedListener {
         mainView = null;
     }
 
-    @Override
     public void onFinished(List<String> items) {
         if (mainView != null) {
             mainView.setItems(items);

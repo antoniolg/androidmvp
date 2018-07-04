@@ -31,7 +31,7 @@ import com.antonioleiva.mvpexample.app.R;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements MainView, MainAdapter.Listener {
+public class MainActivity extends AppCompatActivity implements MainView {
 
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
@@ -88,16 +88,11 @@ public class MainActivity extends AppCompatActivity implements MainView, MainAda
 
     @Override
     public void setItems(List<String> items) {
-        recyclerView.setAdapter(new MainAdapter(items, this));
+        recyclerView.setAdapter(new MainAdapter(items, presenter::onItemClicked));
     }
 
     @Override
     public void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onItemClicked(String item) {
-        presenter.onItemClicked(item);
     }
 }

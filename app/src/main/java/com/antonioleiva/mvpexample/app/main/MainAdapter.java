@@ -3,7 +3,6 @@ package com.antonioleiva.mvpexample.app.main;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -37,12 +36,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
         final String item = items.get(position);
         holder.textView.setText(item);
-        holder.textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onItemClicked(item);
-            }
-        });
+        holder.textView.setOnClickListener(v -> listener.onItemClicked(item));
     }
 
     @Override
