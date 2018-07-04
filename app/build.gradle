@@ -1,15 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '24.0.3'
-
+    compileSdkVersion 27
     defaultConfig {
-        applicationId 'com.antonioleiva.androidmvp'
-        minSdkVersion 16
-        targetSdkVersion 24
+        applicationId "antonioleiva.com.test"
+        minSdkVersion 21
+        targetSdkVersion 27
         versionCode 1
-        versionName '1.0'
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -20,6 +19,6 @@ android {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:2.0.90-beta'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.15.0'
 }

@@ -42,9 +42,9 @@ public class MainActivity extends Activity implements MainView, AdapterView.OnIt
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = (ListView) findViewById(R.id.list);
+        listView = findViewById(R.id.list);
         listView.setOnItemClickListener(this);
-        progressBar = (ProgressBar) findViewById(R.id.progress);
+        progressBar = findViewById(R.id.progress);
         presenter = new MainPresenterImpl(this, new FindItemsInteractorImpl());
     }
 

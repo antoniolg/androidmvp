@@ -39,9 +39,9 @@ public class LoginActivity extends Activity implements LoginView, View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        progressBar = (ProgressBar) findViewById(R.id.progress);
-        username = (EditText) findViewById(R.id.username);
-        password = (EditText) findViewById(R.id.password);
+        progressBar = findViewById(R.id.progress);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
         findViewById(R.id.button).setOnClickListener(this);
 
         presenter = new LoginPresenterImpl(this,new LoginInteractorImpl());
