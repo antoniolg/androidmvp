@@ -46,5 +46,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     override fun navigateToHome() {
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 }
