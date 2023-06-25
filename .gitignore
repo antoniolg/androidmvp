@@ -37,3 +37,4 @@ proguard/
  
 # OS
 .DS_Store
+/bin
